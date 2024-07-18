@@ -1,108 +1,90 @@
-# Speech to SOAP Note Generator
+# Transcription and SOAP Notes Generation  
+  
+This project uses Azure Cognitive Services and OpenAI to transcribe conversations and generate SOAP notes from the transcriptions. The transcription process can be stopped using a trigger phrase.  
+  
+## Table of Contents  
+  
+- [Prerequisites](#prerequisites)  
+- [Installation](#installation)  
+- [Configuration](#configuration)  
+- [Usage](#usage)  
+- [How It Works](#how-it-works)  
+- [License](#license)  
+  
+## Prerequisites  
+  
+- Python 3.6 or higher  
+- An Azure account with access to Cognitive Services  
+- An OpenAI account with API access  
+- Jinja2 template files: `soap_notes_prompt.jinja2` and `soap_example.jinja2`  
+  
+## Installation  
+  
+1. Clone the repository:  
 
-This project utilizes Azure Cognitive Services and OpenAI to recognize speech from a microphone, transcribe it, and generate a SOAP (Subjective, Objective, Assessment, and Plan) note in markdown format.
+    ```bash  
+    git clone https://github.com/yourusername/yourrepository.git  
+    cd yourrepository  
+    ```  
+  
+2. Create a virtual environment and activate it:  
 
-## Table of Contents
+    ```bash  
+    python -m venv venv  
+    source venv/bin/activate  # On Windows: venv\Scripts\activate  
+    ```  
+  
+3. Install the required packages:  
 
-- [Features](#features)
-- [Setup](#setup)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+    ```bash  
+    pip install -r requirements.txt  
+    ```  
+  
+4. Create a `.env` file in the project directory and add your Azure and OpenAI credentials:  
 
-## Features
+    ```plaintext  
+    SPEECH_KEY=your_azure_speech_key  
+    SPEECH_REGION=your_azure_speech_region  
+    AZURE_OPENAI_ENDPOINT=your_openai_endpoint  
+    AZURE_OPENAI_API_KEY=your_openai_api_key  
+    ```  
+  
+## Configuration  
+  
+Ensure you have the following Jinja2 template files in the project directory:  
+  
+- `soap_notes_prompt.jinja2`: Template for SOAP notes prompt.  
+- `soap_example.jinja2`: Template for SOAP notes example.  
+  
+## Usage  
+  
+1. Run the transcription and SOAP notes generation script:  
 
-- **Speech Recognition**: Recognizes speech using Azure Cognitive Services.
-- **Transcription**: Saves the recognized speech to a text file.
-- **SOAP Note Generation**: Utilizes OpenAI to generate a SOAP note based on the recognized speech.
-- **Template Rendering**: Uses Jinja2 to render the SOAP note prompt and example.
-
-## Setup
-
-### Prerequisites
-
-- Python 3.7+
-- Azure subscription with the Cognitive Services and OpenAI APIs enabled.
-- Required Python packages:
-  - `azure-cognitiveservices-speech`
-  - `openai`
-  - `jinja2`
-  - `python-dotenv`
-
-### Installation
-
-1. Clone the repository:
-
-    ```sh
-    git clone https://github.com/your_repo/speech-to-soap-note.git
-    cd speech-to-soap-note
-    ```
-
-2. Create a virtual environment and activate it:
-
-    ```sh
-    python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    ```
-
-3. Install the required packages:
-
-    ```sh
-    pip install -r requirements.txt
-    ```
-
-4. Create a `.env` file with your Azure and OpenAI credentials:
-
-    ```ini
-    SPEECH_KEY=your_azure_speech_key
-    SPEECH_REGION=your_azure_speech_region
-    AZURE_OPENAI_ENDPOINT=your_azure_openai_endpoint
-    AZURE_OPENAI_API_KEY=your_azure_openai_api_key
-    ```
-
-## Usage
-
-1. Ensure your templates for the SOAP notes prompt and example are in the project directory:
-
-    - `soap_notes_prompt.jinja2`
-    - `soap_example.jinja2`
-
-2. Run the script:
-
-    ```sh
-    python script.py
-    ```
-
-3. Follow the on-screen prompts to speak into your microphone.
-
-4. The transcribed text will be saved to `transcription.txt` and the generated SOAP note will be saved to `soap_notes.md`.
-
-## Script Overview
-
-### `recognize_from_mic()`
-
-Recognizes speech from the microphone, saves the transcription to `transcription.txt`, and returns the recognized text.
-
-### `render_soap_notes_prompt()`
-
-Renders the SOAP notes prompt using the `soap_notes_prompt.jinja2` template and returns the rendered prompt.
-
-### `render_soap_example()`
-
-Renders an example SOAP note using the `soap_example.jinja2` template and returns the rendered example.
-
-### `create_soap_notes(result, soap_notes_prompt, soap_example)`
-
-Uses OpenAI to create a SOAP note based on the transcribed text, prompt, and example. The generated note is saved to `soap_notes.md`.
-
-## Contributing
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes.
-4. Push to the branch (`git push origin feature-branch`).
-5. Open a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+    ```bash  
+    python main.py  
+    ```  
+  
+2. Speak into your microphone. The transcription process will start automatically.  
+  
+3. To stop the transcription, say the trigger phrase "stop recording".  
+  
+4. The transcribed text will be saved to `transcription.txt`.  
+  
+5. The generated SOAP notes will be printed to the terminal and saved to `soap_notes.md`.  
+  
+## How It Works  
+  
+1. **Transcription**: The script uses Azure Cognitive Services' `ConversationTranscriber` to transcribe the conversation. The transcription process can be stopped using a trigger phrase.  
+  
+2. **SOAP Notes Generation**: The transcribed text is passed to OpenAI's GPT-4 model to generate SOAP notes. The generated notes are saved to a markdown file and printed to the terminal.  
+  
+### Key Components  
+  
+- `recognize_from_mic()`: Captures the conversation from the microphone and transcribes it.  
+- `create_soap_notes()`: Uses OpenAI to generate SOAP notes from the transcribed text.  
+- `render_soap_notes_prompt()`: Renders the SOAP notes prompt template.  
+- `render_soap_example()`: Renders the SOAP notes example template.  
+  
+## License  
+  
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.  

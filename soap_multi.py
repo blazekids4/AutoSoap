@@ -22,6 +22,8 @@ def conversation_transcriber_transcribed_cb(evt: speechsdk.SpeechRecognitionEven
         print('\tText={}'.format(evt.result.text))  
         print('\tSpeaker ID={}'.format(evt.result.speaker_id))  
         transcribed_text += evt.result.text + " "  # Append recognized text to the transcribed_text  
+        with open('dialogue.txt', 'a') as dialogue_file:  
+            dialogue_file.write(f'Speaker {evt.result.speaker_id}: {evt.result.text}\n')  
         if trigger_phrase in evt.result.text.lower():  # Check if the trigger phrase is in the recognized text  
             print('Trigger phrase detected. Stopping transcription.')  
             transcribing_stop = True  
