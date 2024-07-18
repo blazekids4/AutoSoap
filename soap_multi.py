@@ -4,8 +4,10 @@ import os
 import time  
 from jinja2 import Environment, FileSystemLoader  
   
+# Global variables  
 transcribing_stop = False  
 trigger_phrase = "stop recording"  
+transcribed_text = ""  
   
 def conversation_transcriber_recognition_canceled_cb(evt: speechsdk.SessionEventArgs):  
     print('Canceled event')  
@@ -14,11 +16,12 @@ def conversation_transcriber_session_stopped_cb(evt: speechsdk.SessionEventArgs)
     print('SessionStopped event')  
   
 def conversation_transcriber_transcribed_cb(evt: speechsdk.SpeechRecognitionEventArgs):  
-    global transcribing_stop  
+    global transcribing_stop, transcribed_text  
     print('TRANSCRIBED:')  
     if evt.result.reason == speechsdk.ResultReason.RecognizedSpeech:  
         print('\tText={}'.format(evt.result.text))  
         print('\tSpeaker ID={}'.format(evt.result.speaker_id))  
+        transcribed_text += evt.result.text + " "  # Append recognized text to the transcribed_text  
         if trigger_phrase in evt.result.text.lower():  # Check if the trigger phrase is in the recognized text  
             print('Trigger phrase detected. Stopping transcription.')  
             transcribing_stop = True  
@@ -29,7 +32,7 @@ def conversation_transcriber_session_started_cb(evt: speechsdk.SessionEventArgs)
     print('SessionStarted event')  
   
 def recognize_from_mic():  
-    global transcribing_stop  
+    global transcribing_stop, transcribed_text  
     speech_key = os.getenv("SPEECH_KEY")  
     service_region = os.getenv("SPEECH_REGION")  
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)  
@@ -59,23 +62,14 @@ def recognize_from_mic():
   
     conversation_transcriber.stop_transcribing_async()  
   
-    print("Speak into your microphone.")  
-    result = speech_recognizer.recognize_once_async().get()  
-  
-    if result.reason == speechsdk.ResultReason.RecognizedSpeech:  
-        print("Recognized: {}".format(result.text))  
+    if transcribed_text:  
+        print("Final Transcription: {}".format(transcribed_text))  
         with open('transcription.txt', 'w') as file:  
-            file.write(result.text)  
-        return result.text  # Return the recognized text  
-    elif result.reason == speechsdk.ResultReason.NoMatch:  
-        print("No speech could be recognized: {}".format(result.no_match_details))  
+            file.write(transcribed_text)  
+        return transcribed_text  # Return the transcribed text  
+    else:  
+        print("No speech could be recognized.")  
         return ""  # Return an empty string if no speech is recognized  
-    elif result.reason == speechsdk.ResultReason.Canceled:  
-        cancellation_details = result.cancellation_details  
-        print("Speech Recognition canceled: {}".format(cancellation_details.reason))  
-        if cancellation_details.reason == speechsdk.CancellationReason.Error:  
-            print("Error details: {}".format(cancellation_details.error_details))  
-        return ""  # Return an empty string in case of cancellation  
   
 client = AzureOpenAI(  
     azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),  
@@ -106,6 +100,7 @@ def create_soap_notes(result, soap_notes_prompt, soap_example):
     soap_note = completion.choices[0].message.content  
     with open('soap_notes.md', 'w') as md_file:  
         md_file.write(soap_note)  
+    print(soap_note)  # Print the generated SOAP notes to the terminal  
     return soap_note  
   
 # Generate the soap_notes_prompt and soap_example  
@@ -115,4 +110,4 @@ soap_example = render_soap_example()
 # Now call create_soap_notes with all required arguments  
 recognized_text = recognize_from_mic()  
 if recognized_text:  
-    print(create_soap_notes(recognized_text, soap_notes_prompt, soap_example))  
+    create_soap_notes(recognized_text, soap_notes_prompt, soap_example)  
