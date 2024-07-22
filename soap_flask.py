@@ -1,9 +1,11 @@
+from flask import Flask, render_template, request, redirect, url_for, send_file  
 import azure.cognitiveservices.speech as speechsdk  
 from openai import AzureOpenAI  
 import os  
 import time  
 from jinja2 import Environment, FileSystemLoader  
-
+  
+app = Flask(__name__)  
   
 # Global variables  
 transcribing_stop = False  
@@ -36,6 +38,8 @@ def conversation_transcriber_session_started_cb(evt: speechsdk.SessionEventArgs)
   
 def recognize_from_mic():  
     global transcribing_stop, transcribed_text  
+    transcribing_stop = False  
+    transcribed_text = ""  
     speech_key = os.getenv("SPEECH_KEY")  
     service_region = os.getenv("SPEECH_REGION")  
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)  
@@ -96,21 +100,35 @@ def create_soap_notes(result, soap_notes_prompt, soap_example):
     completion = client.chat.completions.create(  
         model="gpt-4o",  
         messages=[  
-            {"role": "system", "content": f"you are an expert writing medical SOAP notes.  you will take the transcribed note provided by the doctor and you will create a detailed SOAP formatted report.  because this is a prototype application, you will insert reasonable assumptions into areas of your report you do not have the full context.  you will not add any additional notes or commentary to your response other than your SOAP formatted report. You will reference these notes on writing SOAP reports: {soap_notes_prompt}. You will also reference this example: {soap_example} Now the user will provide you the Doctors notes."},  
+            {"role": "system", "content": f"you are an expert writing medical SOAP notes. you will take the transcribed note provided by the doctor and you will create a detailed SOAP formatted report, which will be a .txt file so please be sure to add headers and spacing. because this is a prototype application, you will insert reasonable assumptions into areas of your report you do not have the full context. you will not add any additional notes or commentary to your response other than your SOAP formatted report. You will reference these notes on writing SOAP reports: {soap_notes_prompt}. You will also reference this example: {soap_example} Now the user will provide you the Doctors notes."},  
             {"role": "user", "content": result},  
         ],  
     )  
     soap_note = completion.choices[0].message.content  
-    with open('soap_notes.md', 'w') as md_file:  
-        md_file.write(soap_note)  
+    with open('soap_notes.txt', 'w') as txt_file:  
+        txt_file.write(soap_note)  
     print(soap_note)  # Print the generated SOAP notes to the terminal  
     return soap_note  
   
-# Generate the soap_notes_prompt and soap_example  
-soap_notes_prompt = render_soap_notes_prompt()  
-soap_example = render_soap_example()  
+@app.route('/')  
+def index():  
+    return render_template('index.html')  
   
-# Now call create_soap_notes with all required arguments  
-recognized_text = recognize_from_mic()  
-if recognized_text:  
-    create_soap_notes(recognized_text, soap_notes_prompt, soap_example)  
+@app.route('/start_recording', methods=['POST'])  
+def start_recording():  
+    recognized_text = recognize_from_mic()  
+    if recognized_text:  
+        soap_notes_prompt = render_soap_notes_prompt()  
+        soap_example = render_soap_example()  
+        soap_note = create_soap_notes(recognized_text, soap_notes_prompt, soap_example)  
+        return redirect(url_for('view_response'))  
+    else:  
+        return "No speech could be recognized. Please try again."  
+  
+@app.route('/view_response')  
+def view_response():  
+    return send_file('soap_notes.txt', as_attachment=True)  
+
+  
+if __name__ == '__main__':  
+    app.run(debug=True)  

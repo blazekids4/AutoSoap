@@ -1,0 +1,29 @@
+```
+Client Full Name: Tom Jones 
+Client Date of Birth: [Assumption: 01/01/1980]
+
+Date of Service: [Assumption: 10/12/2023]
+Exact start time and end time: [Assumption: 2:00 pm to 2:20 pm: 20 mins]
+
+Session Location: [Assumption: 456 Health Blvd, Springfield, IL 62701]
+
+Diagnosis: [Assumption: M54.5 Low back pain]
+
+Subjective:
+The client, Tom Jones, reported experiencing severe pain in his back, rating it as 10 out of 10. He expressed significant discomfort and a considerable impact on his daily functioning due to the intensity of the pain. Tom mentioned that he is not currently taking any pain relief medication or any other treatments for his condition.
+
+Objective:
+The client appeared to be in considerable distress, frequently shifting in his seat during the session. His facial expressions indicated pain, and he occasionally winced while speaking about his condition. No other physical exam findings were noted at this time as the focus was primarily on understanding the client's reported symptoms and current situation.
+
+Assessment:
+Tom is experiencing severe acute low back pain, which is significantly affecting his quality of life. The absence of any current pain management or therapeutic interventions indicates a need for immediate attention to address his symptoms and improve his functioning. Further assessment, including a physical examination and diagnostic imaging, may be necessary to determine the underlying cause of his back pain and develop an appropriate treatment plan.
+
+Plan:
+1. Immediate prescription of appropriate pain relief medication to manage Tom's acute pain.
+2. Scheduling a follow-up appointment for a complete physical examination and possible referral for diagnostic imaging (e.g., X-ray, MRI) to identify the underlying cause of pain.
+3. Discussion on non-pharmacological pain management strategies, including physical therapy and lifestyle modifications.
+4. Provision of educational materials on back health, safe lifting techniques, and ergonomics to prevent further injury.
+5. Setting up follow-up appointments to monitor Tom's progress and adjust the treatment plan as necessary.
+
+This document is intended for educational purposes only. Examples are for purposes of illustration only. It is designed to facilitate compliance with payer requirements and applicable law, but please note that the applicable laws and requirements vary from payer to payer and state to state. Please check with your legal counsel or state licensing board for specific requirements.
+```

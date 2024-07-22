@@ -5,3 +5,64 @@ Speaker Guest-2: Well, it's quite a quite a scenario that you've presented to me
 Speaker Guest-1: We'll have to put you on a plan, a certain plan to help you overcome this. Well, what do we say this grieving that you're going through and so that we can find healthier ways for you to deal with all this anxiety?
 Speaker Guest-1: And it sounds like depression and perhaps some substance problems. So let's let's put together a plan.
 Speaker Guest-1: Stop recording.
+Speaker Guest-1: Hi Gunjan, welcome to my office. How are you feeling?
+Speaker Guest-2: You're just saying I'm doing good. Thanks. How about you?
+Speaker Guest-1: I'm doing, I'm doing pretty good. You can't be that good because you're here for some reason. What what, what brings you into that? Yeah.
+Speaker Guest-1: I don't know, I was working in my garden and I slept and since then I'm having this pain. Apart from that I also have some fever. So I thought maybe let's have a consultation with you to see if you can help me with some medication for this. Wow, not your day, huh? A fever and back pain and you want the drugs right away, huh? Well, let.
+Speaker Guest-1: Yes. Or do you have any?
+Speaker Guest-1: Are there are you taking any medication right now?
+Speaker Guest-1: OK. And do you have any allergies or allergic or any any adverse effects related to medication?
+Speaker Guest-1: OK, great. And then your pain on a scale of one to 10.
+Speaker Guest-1: Oh my goodness, we better get you to the emergency room. OK, Stop recording.
+Speaker Guest-1: Hello, my name is Doctor Junkole.
+Speaker Guest-1: Welcome to my practice.
+Speaker Guest-1: Hi, my name is Bobby Smith and umm I injured my knee playing football yesterday.
+Speaker Guest-1: Oh, I'm sorry to hear that, Mr. Smith. Well, let's see here. Umm, can you tell me your pain on a scale of one to 10?
+Speaker Guest-1: Yes, umm, my pain.
+Speaker Guest-1: Is A5.
+Speaker Guest-1: Oh my goodness.
+Speaker Guest-1: That's quite a lot of pain.
+Speaker Guest-1: I know it is.
+Speaker Guest-1: Stop recording.
+Speaker Guest-1: Hi KP, My name is Doctor Justin. Umm, how are you feeling? I'm not feeling very good, doctor. Oh, yeah? What, uh, what brings you in?
+Speaker Guest-1: Umm, I was actually, uh, working in the yard couple of days and did some scrubbing to get rid of the mosque here in Vancouver and then suddenly went back, hack it up and now I'm in a lot of pain. I can't get up, can't move around.
+Speaker Guest-1: I don't know. Hold on one second. I don't know how it is going. It's just delayed.
+Speaker Guest-1: So you were working in the yard. You can't what? What would you rate your pain on a scale of one to?
+Speaker Guest-2: 10 This time around it's actually almost 5.
+Speaker Guest-1: OK.
+Speaker Guest-1: And are you doing anything to treat it like this? No.
+Speaker Guest-2: I'm just simply resting and ignoring work and ignoring my colleagues and just lying down in bed.
+Speaker Guest-1: Yes, that's a good, that's a good idea. Just like don't come on camera just laid out.
+Speaker Guest-1: Umm, OK, well, why don't we, uh, umm, your blood pressure looks good, you don't have a fever, umm, you've lost weight, so good job in working out KP. Yeah. And, uh, so let's, uh, let's put together a plan.
+Speaker Guest-1: Stop recording.
+Speaker Guest-1: Hello, my name is Doctor Smith and welcome.
+Speaker Guest-2: We're here now, Doctor Smith. My name is Nancy Smiley, and I don't feel too good.
+Speaker Guest-1: Well, what is the problem?
+Speaker Guest-1: Nancy.
+Speaker Guest-2: Well, I hurt my back on the gardening floor and uh, I picked up a big shovel and uh, a squirrel scared me and I and I hurt my back real bad.
+Speaker Guest-1: Well, I am so sorry to hear that. On a scale of one to 10, what is your pain?
+Speaker Guest-2: Well, I'd say 150.
+Speaker Guest-1: Wow, that's a lot of pain.
+Speaker Guest-1: Are you taking anything for your pain? No, not yet. OK.
+Speaker Guest-1: Well.
+Speaker Guest-1: Umm, your blood pressure looks OK, you've gained a little weight.
+Speaker Guest-1: Your eyes look a little bloodshot and I am going to put together a plan for you. Nancy, stop recording.
+Speaker Guest-1: Hello.
+Speaker Guest-1: Mr. Smith, what brings you in today?
+Speaker Guest-1: Well, I'm suffering from a bit of a a sore back and a fever. Oh really? I'm sorry to hear that. Now, when did this start? It started about a week ago.
+Speaker Guest-1: Oh yeah. OK. Well, in terms of your back, on a scale of one to 10, how is your pain?
+Speaker Guest-1: I'd say my pain is A7. OK. Are you taking anything for your pain? I'm just taking some Advil right now.
+Speaker Guest-1: OK, umm, well.
+Speaker Guest-1: I'm taking, I just took your temperature and you are running 101 degree fever. So, uh, that's of concern. We gotta make sure you drink a lot of fluids, umm, and take, uh, continue to take Advil and try to, or maybe Tylenol, switch to Tylenol, Take your, your fever down.
+Speaker Guest-1: Umm, let's umm, look at some, uh, possible, uh, medication for your back. Are you, are you allergic to any medication?
+Speaker Guest-1: Uh, no, but I don't want any of those opioids. Oh, that's OK. We're not gonna give you any opioids today.
+Speaker Guest-1: So let's put together a plan and we will see you back in a week. Stop recording.
+Speaker Guest-1: Hello, my name is Doctor Johnson.
+Speaker Guest-1: Hello, Doctor Johnson. My name is Alvador Simon. Jointly. Well, welcome. What brings you in today, Album. Well, what brings me in today is I've got an awful fever and a sore back. Oh, I'm sorry to hear that. Let's prescribe you some pain medicine. Do you have any allergies?
+Speaker Guest-1: Her bad reactions to pain medicine.
+Speaker Guest-1: Ah, no. OK, on a scale of one to 10, what is your pain? Oh, I'd say it's 7 1/2. OK, great. Let's put together a plan for you. Stop recording.
+Speaker Guest-1: Test. This is a test. This is a test. I just said that three times. Stop recording.
+Speaker Guest-1: Welcome to my doctor's office. What's your name? My name is Billy. Hey, Billy. What brings you in today? I'm sick and I'm hurting. Oh. How sick are you and how much are you hurting? Well, I am sick as a dog, and I'm hurting like a level 9 out of 10. Oh, I'm sorry to hear that. Let's put together a plan.
+Speaker Guest-1: Stop recording.
+Speaker Guest-1: Famous doctor. Doctor. Hello. My name is Doctor Smith. Why? Hello, Doctor Smith. My name is Billy and my back hurts like A10. I am so sorry to hear that, Billy. Are you taking anything? I sure ain't OK, Billy. Well, let's create a plan for you. Stop recording.
+Speaker Guest-1: Hello, My name is Doctor Smith. Well, hello, Doctor Smith. My name is Tom Jones. And I'm hurting. While. I'm so sorry to hear that. Tom Jones. What are you hurting? Why are you hurting? Oh, my back hurts so bad. It's a it's a 10 out of 10. Oh, are you taking anything? No, I'm not taking anything at all. OK, well, let's put together a plan for you. Stop recording.
