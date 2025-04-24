@@ -1,90 +1,116 @@
-# Transcription and SOAP Notes Generation  
-  
-This project uses Azure Cognitive Services and OpenAI to transcribe conversations and generate SOAP notes from the transcriptions. The transcription process can be stopped using a trigger phrase.  
-  
-## Table of Contents  
-  
-- [Prerequisites](#prerequisites)  
-- [Installation](#installation)  
-- [Configuration](#configuration)  
-- [Usage](#usage)  
-- [How It Works](#how-it-works)  
-- [License](#license)  
-  
-## Prerequisites  
-  
-- Python 3.6 or higher  
-- An Azure account with access to Cognitive Services  
-- An OpenAI account with API access  
-- Jinja2 template files: `soap_notes_prompt.jinja2` and `soap_example.jinja2`  
-  
-## Installation  
-  
-1. Clone the repository:  
+# AutoSOAP
 
-    ```bash  
-    git clone https://github.com/yourusername/yourrepository.git  
-    cd yourrepository  
-    ```  
-  
-2. Create a virtual environment and activate it:  
+A prototype Python application that uses Azure Cognitive Services for real-time conversation transcription and Azure OpenAI (GPT-4) to generate clinical SOAP notes. Supports both a CLI and a Flask web interface.
 
-    ```bash  
-    python -m venv venv  
-    source venv/bin/activate  # On Windows: venv\Scripts\activate  
-    ```  
-  
-3. Install the required packages:  
+## Features
 
-    ```bash  
-    pip install -r requirements.txt  
-    ```  
-  
-4. Create a `.env` file in the project directory and add your Azure and OpenAI credentials:  
+- Real‑time transcription with Azure Speech `ConversationTranscriber` and a trigger phrase ("stop recording") to end sessions  
+- Generate detailed SOAP notes (Subjective, Objective, Assessment, Plan) via Azure OpenAI  
+- CLI scripts: `soap.py`, `soap_multi.py`, `whisper.py`  
+- Flask web app: `soap_flask.py` with simple UI (`templates/index.html`, `templates/view_response.html`)  
+- Jinja2 templates for prompts and examples: `soap_notes_prompt.jinja2`, `soap_example.jinja2`  
 
-    ```plaintext  
-    SPEECH_KEY=your_azure_speech_key  
-    SPEECH_REGION=your_azure_speech_region  
-    AZURE_OPENAI_ENDPOINT=your_openai_endpoint  
-    AZURE_OPENAI_API_KEY=your_openai_api_key  
-    ```  
-  
-## Configuration  
-  
-Ensure you have the following Jinja2 template files in the project directory:  
-  
-- `soap_notes_prompt.jinja2`: Template for SOAP notes prompt.  
-- `soap_example.jinja2`: Template for SOAP notes example.  
-  
-## Usage  
-  
-1. Run the transcription and SOAP notes generation script:  
+## Demo
 
-    ```bash  
-    python main.py  
-    ```  
-  
-2. Speak into your microphone. The transcription process will start automatically.  
-  
-3. To stop the transcription, say the trigger phrase "stop recording".  
-  
-4. The transcribed text will be saved to `transcription.txt`.  
-  
-5. The generated SOAP notes will be printed to the terminal and saved to `soap_notes.md`.  
-  
-## How It Works  
-  
-1. **Transcription**: The script uses Azure Cognitive Services' `ConversationTranscriber` to transcribe the conversation. The transcription process can be stopped using a trigger phrase.  
-  
-2. **SOAP Notes Generation**: The transcribed text is passed to OpenAI's GPT-4 model to generate SOAP notes. The generated notes are saved to a markdown file and printed to the terminal.  
-  
-### Key Components  
-  
-- `recognize_from_mic()`: Captures the conversation from the microphone and transcribes it.  
-- `create_soap_notes()`: Uses OpenAI to generate SOAP notes from the transcribed text.  
-- `render_soap_notes_prompt()`: Renders the SOAP notes prompt template.  
-- `render_soap_example()`: Renders the SOAP notes example template.  
-  
-## License  
-  
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.  
+<!-- GitHub strips iframes in Markdown previews; use a clickable thumbnail instead -->
+[![Watch the demo video](https://img.youtube.com/vi/Zhg5XXd0FDM/0.jpg)](https://youtu.be/Zhg5XXd0FDM)
+
+## Prerequisites
+
+- Python 3.8 or higher  
+- Azure subscription with Cognitive Services (Speech)  
+- Azure OpenAI resource  
+- Microphone (for live transcription)  
+
+## Installation
+
+1. Clone the repo:  
+
+   ```bash
+   git clone https://github.com/yourusername/AutoSoap.git
+   cd AutoSoap
+   ```
+
+2. Create and activate a virtual environment:  
+
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate    # On Windows
+   ```
+
+3. Install dependencies:  
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Copy and configure environment variables:  
+
+   ```bash
+   copy .env.example .env
+   ```
+
+   Edit `.env` and fill in your Azure/OpenAI keys and endpoints.
+
+## Usage
+
+### CLI Mode
+
+- Live multi‑speaker transcription and SOAP notes generation:  
+
+  ```bash
+  python soap_multi.py
+  ```
+
+- Simple one‑turn transcription and note generation:  
+
+  ```bash
+  python soap.py
+  ```
+
+- Direct Whisper‑style transcription using Azure OpenAI audio endpoint:  
+
+  ```bash
+  python whisper.py
+  ```
+
+Generated files:  
+
+- Transcribed text → `soap_notes_archive/transcription.txt`  
+- SOAP notes → `soap_notes_archive/soap_notes.md` (or `soap_notes.txt` in Flask mode)  
+
+### Flask Web Interface
+
+1. Run the Flask app:  
+
+   ```bash
+   python soap_flask.py
+   ```
+
+2. Visit `http://localhost:5000` in your browser  
+3. Click “Start Recording” to begin  
+4. Say “stop recording” to finish  
+5. Download your generated SOAP notes  
+
+## Project Structure
+
+```
+.
+├── soap_flask.py
+├── soap_multi.py
+├── soap.py
+├── whisper.py
+├── requirements.txt
+├── .env.example
+├── templates/
+│   ├── index.html
+│   └── view_response.html
+├── soap_notes_prompt.jinja2
+├── soap_example.jinja2
+└── static/
+    └── soap.jpg
+```
+
+## License
+
+MIT License. See [LICENSE](LICENSE) for details.
